@@ -2,6 +2,7 @@
 #
 .DS_Store
 
+
 # Xcode
 #
 build/
@@ -64,3 +65,7 @@ yarn-error.log
 
 # testing
 /coverage
+
+#key
+src/screens/DestinationSearch/googleKey.tsx
+

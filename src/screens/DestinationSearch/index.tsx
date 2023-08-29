@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, SafeAreaView } from 'react-native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import { GOOGLE_KEY } from './googleKey';
 
 
 import { styles } from './styles';
@@ -34,7 +35,7 @@ export function DestinationSearch() {
                         console.log(data, details);
                     }}
                     query={{
-                        key: 'AIzaSyDE7iVuutva3TXaMWk1NNeD8OvRYATo3do',
+                        key: GOOGLE_KEY,
                         language: 'pt',
                     }}
                 />
