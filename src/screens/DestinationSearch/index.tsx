@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, SafeAreaView } from 'react-native';
-import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import { GooglePlacesAutocomplete, GooglePlaceData, GooglePlaceDetail } from 'react-native-google-places-autocomplete';
 import { GOOGLE_KEY } from './googleKey';
 
 
@@ -8,31 +8,42 @@ import { styles } from './styles';
 
 export function DestinationSearch() {
 
-    const [fromText, setFromText] = useState('')
-    const [destinationText, setDestinationText] = useState('')
+    const [originPlace, setOriginPlace] = useState<GooglePlaceData | null>(null)
+    const [destinationPlace, setDestinationPlace] = useState<GooglePlaceData | null>(null)
 
-    //console.log(fromText, destinationText)
+    useEffect (() => {
+        if (originPlace && destinationPlace) {
+            console.warn ('Redirect to results')
+        }
+
+    },[originPlace, destinationPlace])   
 
     return (
         <SafeAreaView>
             <View style={styles.container}>
-                <TextInput
-                    style={styles.textInput}
-                    placeholder='From'
-                    value={fromText}
-                    onChangeText={setFromText}
-                />
-                <TextInput
-                    style={styles.textInput}
-                    placeholder='Where to?'
-                    value={destinationText}
-                    onChangeText={setDestinationText}
-                />
                 <GooglePlacesAutocomplete
-                    placeholder='Search'
-                    onPress={(data, details = null) => {
-                        // 'details' is provided when fetchDetails = true
-                        console.log(data, details);
+                    placeholder='Where from?'
+                    onPress={(data: GooglePlaceData, details: GooglePlaceDetail | null = null) => {
+                        //@ts-ignore
+                        setOriginPlace({ data, details })
+                    }}
+                    styles={{
+                        textInput: styles.textInput
+                    }}
+                    query={{
+                        key: GOOGLE_KEY,
+                        language: 'pt',
+                    }}
+                />
+
+                <GooglePlacesAutocomplete
+                    placeholder='Where to?'
+                    onPress={(data: GooglePlaceData, details: GooglePlaceDetail | null = null) => {
+                        //@ts-ignore
+                        setDestinationPlace({ data, details })
+                    }}
+                    styles={{
+                        textInput: styles.textInput
                     }}
                     query={{
                         key: GOOGLE_KEY,
