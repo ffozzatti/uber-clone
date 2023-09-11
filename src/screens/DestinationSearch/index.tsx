@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, SafeAreaView } from 'react-native';
 import { GooglePlacesAutocomplete, GooglePlaceData, GooglePlaceDetail } from 'react-native-google-places-autocomplete';
-import { GOOGLE_KEY } from './googleKey';
+import { GOOGLE_KEY } from '../../assets/data/googleKey';
 
 
 import { styles } from './styles';

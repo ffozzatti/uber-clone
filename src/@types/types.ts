@@ -4,3 +4,11 @@ export interface TypesDataProps {
     price: number;
     duration: number;  
   } 
+
+  export interface CarsDataTypes {
+    id: string,
+    type: string,
+    latitude: number,
+    longitude: number,
+    heading: number,
+  } 

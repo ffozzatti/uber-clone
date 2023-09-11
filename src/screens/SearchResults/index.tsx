@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Dimensions } from 'react-native';
 
 import { styles } from './styles';
-import { HomeMap } from '../../components/HomeMap';
+import { RouteMap } from '../../components/RouteMap';
 import { UberTypes } from '../../components/UberTypes';
 
 
@@ -10,8 +10,14 @@ import { UberTypes } from '../../components/UberTypes';
 export function SearchResults() {
   return (
     <View style={styles.container}>
-        <HomeMap />
+      <View style={{height: Dimensions.get('window').height - 400}}>
+        <RouteMap />
+      </View>
+
+      <View style={{height: 400}}>
         <UberTypes />
+      </View>
+
     </View>
   );
 }
