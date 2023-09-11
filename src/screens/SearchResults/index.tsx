@@ -5,6 +5,8 @@ import { styles } from './styles';
 import { HomeMap } from '../../components/HomeMap';
 import { UberTypes } from '../../components/UberTypes';
 
+
+
 export function SearchResults() {
   return (
     <View style={styles.container}>
